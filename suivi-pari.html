@@ -5,39 +5,73 @@
     <title>Suivi Bankroll - Paris Tennis</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
-            background-color: #f7f7f7;
+            background-color: #f0f2f5;
+            color: #333;
         }
         h1 {
             text-align: center;
+            color: #2c3e50;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #fff;
+            background-color: #ffffff;
             margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
         }
         th, td {
-            padding: 12px;
-            border: 1px solid #ccc;
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
             text-align: center;
         }
         th {
-            background-color: #e3e3e3;
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
         }
         .summary {
             margin-top: 30px;
             font-size: 1.1em;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
         .gagne {
-            color: green;
+            color: #27ae60;
+            font-weight: bold;
         }
         .perdu {
-            color: red;
+            color: #e74c3c;
+            font-weight: bold;
         }
         .attente {
-            color: orange;
+            color: #f39c12;
+            font-weight: bold;
+        }
+        .filters {
+            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        .filters label {
+            margin-right: 10px;
+            font-weight: 600;
+        }
+        .filters select, .filters input[type="date"] {
+            padding: 6px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95em;
         }
     </style>
 </head>
@@ -50,6 +84,19 @@
         <p><strong>Nombre de paris :</strong> <span id="nb-paris">5</span></p>
         <p><strong>Gains/Pertes cumulés :</strong> <span id="gain-perte">+2.25</span> €</p>
         <p><strong>ROI :</strong> <span id="roi">+50.00</span> %</p>
+    </div>
+
+    <div class="filters">
+        <label for="filter-result">Filtrer par résultat :</label>
+        <select id="filter-result" onchange="filterTable()">
+            <option value="">Tous</option>
+            <option value="Gagné">Gagné</option>
+            <option value="Perdu">Perdu</option>
+            <option value="En attente">En attente</option>
+        </select>
+
+        <label for="filter-date" style="margin-left: 20px;">Filtrer par date :</label>
+        <input type="date" id="filter-date" onchange="filterTable()">
     </div>
 
     <table id="paris-table">
@@ -118,6 +165,29 @@
             </tr>
         </tbody>
     </table>
+
+    <script>
+        function filterTable() {
+            const resultFilter = document.getElementById("filter-result").value.toLowerCase();
+            const dateFilter = document.getElementById("filter-date").value;
+            const rows = document.querySelectorAll("#paris-table tbody tr");
+
+            rows.forEach(row => {
+                const resultText = row.cells[6].textContent.toLowerCase();
+                const dateText = row.cells[0].textContent;
+
+                const matchesResult = !resultFilter || resultText === resultFilter.toLowerCase();
+                const matchesDate = !dateFilter || dateText === formatDate(dateFilter);
+
+                row.style.display = matchesResult && matchesDate ? "" : "none";
+            });
+        }
+
+        function formatDate(dateString) {
+            const [year, month, day] = dateString.split("-");
+            return `${day}/${month}/${year}`;
+        }
+    </script>
 
 </body>
 </html>
