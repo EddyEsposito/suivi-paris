@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suivi Bankroll - Paris Tennis</title>
     <style>
         body {
@@ -73,6 +74,37 @@
             border-radius: 4px;
             font-size: 0.95em;
         }
+
+        @media screen and (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                display: none;
+            }
+            tr {
+                margin-bottom: 15px;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+                padding: 10px;
+            }
+            td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 15px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+        }
     </style>
 </head>
 <body>
@@ -114,54 +146,54 @@
         </thead>
         <tbody>
             <tr>
-                <td>20/05/2025</td>
-                <td>Roland-Garros (Qualifs)</td>
-                <td>Squire vs Alves</td>
-                <td>Vainqueur Squire</td>
-                <td>2.70</td>
-                <td>1.50</td>
-                <td class="gagne">Gagné</td>
-                <td>Squire plus complet, value vs Alves en qualifs GC</td>
+                <td data-label="Date">20/05/2025</td>
+                <td data-label="Tournoi">Roland-Garros (Qualifs)</td>
+                <td data-label="Match">Squire vs Alves</td>
+                <td data-label="Type de pari">Vainqueur Squire</td>
+                <td data-label="Cote">2.70</td>
+                <td data-label="Mise (€)">1.50</td>
+                <td data-label="Résultat" class="gagne">Gagné</td>
+                <td data-label="Commentaire">Squire plus complet, value vs Alves en qualifs GC</td>
             </tr>
             <tr>
-                <td>20/05/2025</td>
-                <td>Roland-Garros (Qualifs)</td>
-                <td>Dougaz vs Popko</td>
-                <td>Vainqueur Dougaz</td>
-                <td>2.22</td>
-                <td>1.00</td>
-                <td class="attente">En attente</td>
-                <td>Dougaz plus régulier sur terre, Popko en méforme</td>
+                <td data-label="Date">20/05/2025</td>
+                <td data-label="Tournoi">Roland-Garros (Qualifs)</td>
+                <td data-label="Match">Dougaz vs Popko</td>
+                <td data-label="Type de pari">Vainqueur Dougaz</td>
+                <td data-label="Cote">2.22</td>
+                <td data-label="Mise (€)">1.00</td>
+                <td data-label="Résultat" class="attente">En attente</td>
+                <td data-label="Commentaire">Dougaz plus régulier sur terre, Popko en méforme</td>
             </tr>
             <tr>
-                <td>20/05/2025</td>
-                <td>Roland-Garros (Qualifs)</td>
-                <td>Carbrera vs Sawangkaew</td>
-                <td>Vainqueur Carbrera</td>
-                <td>3.45</td>
-                <td>0.50</td>
-                <td class="perdu">Perdu</td>
-                <td>—</td>
+                <td data-label="Date">20/05/2025</td>
+                <td data-label="Tournoi">Roland-Garros (Qualifs)</td>
+                <td data-label="Match">Carbrera vs Sawangkaew</td>
+                <td data-label="Type de pari">Vainqueur Carbrera</td>
+                <td data-label="Cote">3.45</td>
+                <td data-label="Mise (€)">0.50</td>
+                <td data-label="Résultat" class="perdu">Perdu</td>
+                <td data-label="Commentaire">—</td>
             </tr>
             <tr>
-                <td>20/05/2025</td>
-                <td>Roland-Garros (Qualifs)</td>
-                <td>Janicijevic vs Wang Xiy</td>
-                <td>Vainqueur Janicijevic</td>
-                <td>4.50</td>
-                <td>0.50</td>
-                <td class="perdu">Perdu</td>
-                <td>—</td>
+                <td data-label="Date">20/05/2025</td>
+                <td data-label="Tournoi">Roland-Garros (Qualifs)</td>
+                <td data-label="Match">Janicijevic vs Wang Xiy</td>
+                <td data-label="Type de pari">Vainqueur Janicijevic</td>
+                <td data-label="Cote">4.50</td>
+                <td data-label="Mise (€)">0.50</td>
+                <td data-label="Résultat" class="perdu">Perdu</td>
+                <td data-label="Commentaire">—</td>
             </tr>
             <tr>
-                <td>20/05/2025</td>
-                <td>ATP Genève</td>
-                <td>Rinderknech vs Kecmanovic</td>
-                <td>Vainqueur Rinderknech</td>
-                <td>2.70</td>
-                <td>1.00</td>
-                <td class="gagne">Gagné</td>
-                <td>—</td>
+                <td data-label="Date">20/05/2025</td>
+                <td data-label="Tournoi">ATP Genève</td>
+                <td data-label="Match">Rinderknech vs Kecmanovic</td>
+                <td data-label="Type de pari">Vainqueur Rinderknech</td>
+                <td data-label="Cote">2.70</td>
+                <td data-label="Mise (€)">1.00</td>
+                <td data-label="Résultat" class="gagne">Gagné</td>
+                <td data-label="Commentaire">—</td>
             </tr>
         </tbody>
     </table>
